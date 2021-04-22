@@ -17,13 +17,13 @@ hdoop@suman-VirtualBox:~$ jps
 hdoop@suman-VirtualBox:~$ hadoop fs -mkdir /myDir
 hdoop@suman-VirtualBox:~$ hadoop fs -ls /
 Found 1 items
-drwxr-xr-x   - hdoop supergroup          0 2021-04-21 20:54 /myDir
+drwxr-xr-x   - hdoop supergroup          0 2021-04-22 15:30 /myDir
 hdoop@suman-VirtualBox:~$ cat >>localfile1
 this is from the local fs 
 hdoop@suman-VirtualBox:~$ hadoop fs -put ./localfile1 /myDir/filefromlocal
 hdoop@suman-VirtualBox:~$ hadoop fs -ls /myDir
 Found 1 items
--rw-r--r--   1 hdoop supergroup         26 2021-04-21 20:59 /myDir/filefromlocal
+-rw-r--r--   1 hdoop supergroup         26 2021-04-22 15:30 /myDir/filefromlocal
 hdoop@suman-VirtualBox:~$ hadoop fs -cat /myDir/filefromlocal
 this is from the local fs
 hdoop@suman-VirtualBox:~$ cat >>localfile2
@@ -31,8 +31,8 @@ this file was copied from local fs
 hdoop@suman-VirtualBox:~$ hadoop fs -copyFromLocal ./localfile2 /
 hdoop@suman-VirtualBox:~$ hadoop fs -ls /
 Found 2 items
--rw-r--r--   1 hdoop supergroup         35 2021-04-21 21:02 /localfile2
-drwxr-xr-x   - hdoop supergroup          0 2021-04-21 20:59 /myDir
+-rw-r--r--   1 hdoop supergroup         35 2021-04-22 15:30 /localfile2
+drwxr-xr-x   - hdoop supergroup          0 2021-04-22 15:01 /myDir
 hdoop@suman-VirtualBox:~$ hadoop fs -cat /localfile2
 this file was copied from local fs
 hdoop@suman-VirtualBox:~$ ls
@@ -48,9 +48,9 @@ hdoop@suman-VirtualBox:~$ ls
 dfsdata  gotFromHadoop  hadoop-3.3.0  localfile1  localfile2  tmpdata
 hdoop@suman-VirtualBox:~$ hadoop fs -ls /
 Found 3 items
--rw-r--r--   1 hdoop supergroup         35 2021-04-21 21:02 /localfile2
--rw-r--r--   1 hdoop supergroup          0 2021-04-21 21:06 /movedFromLocal
-drwxr-xr-x   - hdoop supergroup          0 2021-04-21 20:59 /myDir
+-rw-r--r--   1 hdoop supergroup         35 2021-04-22 15:30 /localfile2
+-rw-r--r--   1 hdoop supergroup          0 2021-04-22 15:31 /movedFromLocal
+drwxr-xr-x   - hdoop supergroup          0 2021-04-22 15:01 /myDir
 hdoop@suman-VirtualBox:~$ hadoop fs -tail localfile2
 tail: `localfile2': No such file or directory
 hdoop@suman-VirtualBox:~$ hadoop fs -tail /localfile2
@@ -59,13 +59,13 @@ hdoop@suman-VirtualBox:~$ hadoop fs -rm /localfile2
 Deleted /localfile2
 hdoop@suman-VirtualBox:~$ hadoop fs -ls /
 Found 2 items
--rw-r--r--   1 hdoop supergroup          0 2021-04-21 21:06 /movedFromLocal
-drwxr-xr-x   - hdoop supergroup          0 2021-04-21 20:59 /myDir
+-rw-r--r--   1 hdoop supergroup          0 2021-04-22 15:31 /movedFromLocal
+drwxr-xr-x   - hdoop supergroup          0 2021-04-22 15:01 /myDir
 hdoop@suman-VirtualBox:~$ hadoop fs -du -s /myDir
 26  26  /myDir
 hdoop@suman-VirtualBox:~$ hadoop fs -ls /myDir
 Found 1 items
--rw-r--r--   1 hdoop supergroup         26 2021-04-21 20:59 /myDir/filefromlocal
+-rw-r--r--   1 hdoop supergroup         26 2021-04-22 15:31/myDir/filefromlocal
 hdoop@suman-VirtualBox:~$ hadoop fs -du -s /myDir/filefromlocal
 26  26  /myDir/filefromlocal
 hdoop@suman-VirtualBox:~$ hadoop fs -df 
@@ -76,7 +76,7 @@ WARNING: Use of this script to execute fsck is deprecated.
 WARNING: Attempting to execute replacement "hdfs fsck" instead.
 
 Connecting to namenode via http://localhost:9870/fsck?ugi=hdoop&path=%2F
-FSCK started by hdoop (auth:SIMPLE) from /127.0.0.1 for path / at Sat Apr 21 21:13:46 IST 2021
+FSCK started by hdoop (auth:SIMPLE) from /127.0.0.1 for path / at Sat Apr 21 22 15:30:19 IST 2021
 
 
 Status: HEALTHY
@@ -113,7 +113,7 @@ Erasure Coded Block Groups:
  Corrupt block groups:		0
  Missing internal blocks:	0
  Blocks queued for replication:	0
-FSCK ended at Sat Apr 21 21:13:46 IST 2021 in 422 milliseconds
+FSCK ended at Sat Apr 22 22 15:32:34IST 2021 in 422 milliseconds
 
 
 The filesystem under path '/' is HEALTHY
